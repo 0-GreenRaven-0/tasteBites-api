@@ -27,16 +27,9 @@ app.use('/review', require('./routes/reviewRoutes'))
 app.use('/userImage', require('./routes/userImageRoutes'))
 app.use('/recipeImage', require('./routes/recipeImageRoutes'))
 
-app.all('*', (req, res) => {
-    res.status(404)
-    if(req.accepts('html')){
-        res.sendFile(path.join(__dirname, "views","404.html"))
-    }else if(req.accepts('json')){
-        res.json({message: 'Not found'})
-    }else{
-        res.type('txt').send("Not found!")
-    }
-})
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 mongoose.connection.once('open', () => {
     console.log('connected to database successfully! :D')
