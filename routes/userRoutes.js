@@ -15,7 +15,7 @@ router.route('/')
 router.route('/')
   .get(usersController.getAllUsers)
 
-//router.use(verifyJWT)
+router.use(verifyJWT)
 
 router.route('/')
   .patch(usersController.editUser)

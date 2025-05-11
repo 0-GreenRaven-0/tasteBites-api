@@ -6,7 +6,7 @@ const verifyJWT = require('../middleware/verifyJWT')
 router.route('/')
    .get(recipeController.getAllRecipes)
 
-//router.use(verifyJWT)
+router.use(verifyJWT)
 
 router.route('/')
   .post(recipeController.createNewRecipes)
